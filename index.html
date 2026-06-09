@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學習歷程記錄</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 頭部 -->
+        <header class="header">
+            <h1>📚 學習歷程記錄</h1>
+            <p class="subtitle">追蹤你的成長，記錄每一步進度</p>
+        </header>
+
+        <!-- 統計卡片 -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-value" id="totalRecords">0</div>
+                <div class="stat-label">總學習記錄</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalHours">0</div>
+                <div class="stat-label">學習時數</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="uniqueSubjects">0</div>
+                <div class="stat-label">學習科目</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completedTasks">0</div>
+                <div class="stat-label">已完成任務</div>
+            </div>
+        </section>
+
+        <!-- 新增/編輯表單 -->
+        <section class="form-section">
+            <h2>📝 新增學習記錄</h2>
+            <form id="learningForm" class="form">
+                <div class="form-group">
+                    <label for="subject">科目/主題 *</label>
+                    <input type="text" id="subject" placeholder="例如：JavaScript、數學、英文..." required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="topic">具體內容 *</label>
+                        <input type="text" id="topic" placeholder="例如：箭頭函數、微積分..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hours">學習時數 *</label>
+                        <input type="number" id="hours" min="0.5" step="0.5" placeholder="0.5" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">學習日期 *</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty">難度</label>
+                        <select id="difficulty">
+                            <option value="簡單">簡單</option>
+                            <option value="中等" selected>中等</option>
+                            <option value="困難">困難</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">筆記/心得</label>
+                    <textarea id="notes" placeholder="記錄學習心得、遇到的問題、收穫等..." rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="completed">
+                        已完成此主題的學習
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">💾 保存記錄</button>
+                    <button type="button" id="cancelBtn" class="btn btn-secondary" style="display:none;">❌ 取消編輯</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 篩選和排序 -->
+        <section class="controls-section">
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="🔍 搜尋科目或內容...">
+                <select id="sortBy">
+                    <option value="date-desc">最新優先</option>
+                    <option value="date-asc">最舊優先</option>
+                    <option value="subject">按科目排序</option>
+                    <option value="hours-desc">學習時數(多→少)</option>
+                    <option value="hours-asc">學習時數(少→多)</option>
+                </select>
+                <button id="clearAllBtn" class="btn btn-danger">🗑️ 清空全部</button>
+            </div>
+        </section>
+
+        <!-- 學習記錄列表 -->
+        <section class="records-section">
+            <h2>📋 學習記錄</h2>
+            <div id="recordsList" class="records-list">
+                <div class="empty-state">
+                    <p>還沒有學習記錄</p>
+                    <p class="empty-hint">開始新增第一條學習記錄吧！</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 進度統計 -->
+        <section class="progress-section">
+            <h2>📊 學習進度</h2>
+            <div id="progressList" class="progress-list">
+                <div class="empty-state">
+                    <p>還沒有進度數據</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
